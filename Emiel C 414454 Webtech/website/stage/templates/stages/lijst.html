@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid bg-success text-dark">
+    <div class="container">
+        <div class="row">
+            {% for stage in stages %}
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title">Stage ID: {{ stage.id }}</h3>
+                        <p class="card-text"><strong>Stage bedrijf:</strong> {{ stage.naam }}</p>
+                        <p class="card-text"><strong>Stage periode:</strong> {{ stage.periode }}</p>
+                        <p class="card-text"><strong>Cijfer:</strong> {{ stage.cijfer }}</p>
+                        {% if stage.student %}
+                            <p class="card-text"><strong>Student:</strong> {{ stage.student.naam }}</p>
+                        {% endif %}
+                        {% if stage.begeleider %}
+                            <p class="card-text"><strong>Begeleider:</strong> {{ stage.begeleider.naam }}</p>
+                        {% endif %}
+                        {% if stage.instelling %}
+                            <p class="card-text"><strong>Naam instelling:</strong> {{ stage.instelling.naam }}</p>
+                            <p class="card-text"><strong>Niveau instelling:</strong> {{ stage.instelling.soort }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

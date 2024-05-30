@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid bg-info text-white">
+    <div class="container text-center">
+        {% if current_user.is_authenticated %}
+            <h1 class="display-4">Hallo, {{ current_user.username }}!</h1>
+            <p class="lead">Nunc est bibendum</p>
+            <p class="lead">Kies boven in het scherm wat je wil gaan doen.</p>
+        {% else %}
+            <h1 class="display-4">Welkom bij het Stageoverzicht</h1>
+            <p class="lead">Hier kun je je stages zien en inloggen of registreren om gegevens te wijzigen, toe te voegen of te verwijderen.</p>
+            <div class="mt-4">
+                <a href="{{ url_for('login') }}" class="btn btn-light btn-lg mr-2">Inloggen</a>
+                <a href="{{ url_for('register') }}" class="btn btn-outline-light btn-lg">Registreren</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

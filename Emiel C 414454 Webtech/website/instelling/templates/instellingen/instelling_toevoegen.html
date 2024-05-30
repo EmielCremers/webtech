@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid bg-secondary text-info">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 bg-white p-4 rounded shadow-sm">
+                <h1 class="display-4 text-dark">Instelling toevoegen</h1>
+                <p class="lead text-muted">Vul de naam van de instelling, het soort instelling en het ID van de stage in en klik op 'toevoegen'.</p>
+                <form method="POST">
+                    {# This hidden_tag is a CSRF security feature. #}
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        <label for="naam" class="form-label text-dark">Naam van de instelling:</label>
+                        {{ form.naam(class="form-control") }}
+                    </div>
+                    <div class="form-group">
+                        <label for="soort" class="form-label text-dark">Soort instelling:</label>
+                        {{ form.soort(class="form-control") }}
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="id" class="form-label text-dark">Stage ID <span class="text-danger">*</span></label>
+                        {{ form.id(class="form-control selectpicker", data_live_search="true") }}
+                        {% if form.id.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.id.errors[0] }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-group text-center">
+                        {{ form.submit(class="btn btn-secondary btn-lg") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

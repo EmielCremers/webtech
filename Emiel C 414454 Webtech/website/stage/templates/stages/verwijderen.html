@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid bg-danger text-dark">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 bg-white p-4 rounded shadow">
+                <h1 class="display-4 text-dark">Stage verwijderen</h1>
+                <p class="lead text-muted">Vul hier het ID in wat je stage heeft gekregen om hem te verwijderen.</p>
+                <form method="POST">
+                    {# This hidden_tag is a CSRF security feature. #}
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        <label for="id" class="form-label text-dark">ID van de stage:</label>
+                        {{ form.id(class="form-control") }}
+                    </div>
+                    <div class="form-group text-center">
+                        {{ form.submit(class="btn btn-danger btn-lg") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

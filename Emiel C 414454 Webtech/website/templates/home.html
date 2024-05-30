@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+    {% if current_user.is_authenticated %}
+    <p> Welkom {{ current_user.username }}!</p>
+    {% else %}
+    <h1>Stageapplicatie</h1>
+    <p>Hier kun je je stageoverzicht zien en inloggen of registreren om gegevens te wijzigen, toe te voegen of verwijderen.</p>
+    {% endif %}  {# Add this line to close the if block #}
+</div>
+{% endblock %}
